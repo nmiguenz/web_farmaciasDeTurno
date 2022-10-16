@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De turno</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="index.css">
+    <script type="text/javascript" src="index.js"></script>
+</head>
+<body>
+    <header>
+        <a href="" class="logo">De turn<span><img src="assets/logo.png" alt=""></span></a>
+
+        <div class="menuToggle" onclick="toggleMenu()">
+
+        </div>
+
+        <!-- lista para vista fullscreen -->
+        <ul class="navigation">
+            <li><a href="#home" onclick="redirect()">Home</a></li>
+            <li><a href="#about" onclick="redirect()">About</a></li>
+            <li><a href="#atendiendo" onclick="redirect()">De turno</a></li>
+            <li><a href="#nosotros" onclick="redirect()">Nosotros</a></li>
+            <li><a href="#opiniones" onclick="redirect()">Opiniones</a></li>
+            <li><a href="#contacto" onclick="redirect()">Contacto</a></li>
+        </ul>
+    </header>
+
+    
+    <!-- Inicio sección Home -->
+    <section class="banner" id="home">
+        <div class="content">
+            <h2>No salgas más<br>a dar vueltas</h2>
+            <p>En <span style="color: #0dbb9d">DeTurno.com</span> vas a encontrar la farmacia que se encuentra abierta el día que la necesitás.</p>
+            <a href="#atendiendo" class="btn">FARMACIAS DE TURNO</a>
+        </div>
+    </section>
+    <!-- Fin sección Home -->
+
+    <!-- Inicio sección About -->
+    <section class="about" id="about">
+        <div class="row">
+            <div class="col50">
+                <h2 class="tituloText"><span>A</span>bout Us</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa saepe reprehenderit, eligendi dignissimos voluptates neque similique doloremque libero perspiciatis deserunt possimus vero labore iure nobis impedit cumque id quidem ducimus accusamus nisi tempore, necessitatibus corrupti in. Molestias doloribus earum, dolore nesciunt esse quidem est porro, animi, eveniet eum aliquam perferendis?
+                <br><br>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione voluptatibus voluptates quis! Eveniet explicabo ipsa corrupti commodi? Aspernatur, consequatur iste odit deserunt ratione eligendi suscipit repudiandae maiores, voluptates sequi pariatur.
+                </p>
+            </div>
+            <div class="col50">
+                <div class="imgBx">
+                    <img src="assets/img1.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Fin sección about -->
+
+    <!-- Inicio sección deTurno -->
+    <!-- Esto habría que hacerlo con Vue para que podamos hacer v-for -->
+    <section class="atendiendo" id="atendiendo">
+        <div class="title">
+            <h2 class="tituloText">De <span>T</span>urno</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ullam veritatis ipsam dolore nisi harum ipsa ad ex? Ipsa maiores natus quos! Pariatur itaque porro ea ipsa totam vero cumque.</p>
+        </div>
+        <div class="content">
+            <div class="box">
+                <div class="ImgBx">
+                    <img src="assets/menu1.jpg" alt="">
+                </div>
+                <div class="text">
+                    <h3>Vacunas</h3>
+                </div>
+            </div>
+            <div class="box">
+                <div class="ImgBx">
+                    <img src="assets/menu2.jpg" alt="">
+                </div>
+                <div class="text">
+                    <h3>Jarabes</h3>
+                </div>
+            </div>
+            <div class="box">
+                <div class="ImgBx">
+                    <img src="assets/menu3.jpg" alt="">
+                </div>
+                <div class="text">
+                    <h3>Pastillas</h3>
+                </div>
+            </div>
+        </div>
+        <div class="title">
+            <a href="#" class="btn">VER MÁS</a>
+        </div>
+    </section>
+    <!-- Fin sección deTurno -->
+
+    <!-- Inicio sección Nosotros -->
+    <!-- <section class="nosotros" id="nosotros">
+        <div class="title">
+            <h2 class="tituloText"><span>N</span>osotros</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ullam veritatis.</p>
+        </div>
+        <div class="content">
+            <div class="box">
+                <div class="ImgBx">
+                    <img src="assets/expert1.jpg" alt="">
+                </div>
+                <div class="text">
+                    <h3>Nicolás Miguenz</h3>
+                </div>
+            </div>
+            <div class="box">
+                <div class="ImgBx">
+                    <img src="assets/expert2.jpg" alt="">
+                </div>
+                <div class="text">
+                    <h3>Nicolás Miguenz</h3>
+                </div>
+            </div>
+            <div class="box">
+                <div class="ImgBx">
+                    <img src="assets/expert3.jpg" alt="">
+                </div>
+                <div class="text">
+                    <h3>Nicolás Miguenz</h3>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Nosotros 2 -->
+    <section class="nosotros" id="nosotros">
+        <div class="content">
+            <div class="title">
+                <h2 class="tituloText"><span>N</span>osotros</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ullam veritatis.</p>
+            </div>
+            <div class="teamBx">
+                <div class="member">
+                    <div class="imgBx">
+                        <img src="/assets/pedro.jpg" alt="">
+                    </div>
+                    <div class="details">
+                        <h2>Nicolás Miguenz<br><span>Backend developer</span></h2>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="imgBx">
+                        <img src="/assets/alexis.jpg" alt="">
+                    </div>
+                    <div class="details">
+                        <h2>Nicolás Miguenz<br><span>Backend developer</span></h2>
+                    </div>
+                </div>
+                <div class="member">
+                    <div class="imgBx">
+                        <img src="/assets/Nico.jpg" alt="">
+                    </div>
+                    <div class="details">
+                        <h2>Nicolás Miguenz<br><span>Backend developer</span></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+     <!-- Fin sección Nosotros -->
+
+    <!-- Inicio sección Opiniones -->
+    <section class="opiniones" id="opiniones">
+        <div class="title blanco">
+            <h2 class="tituloText">Lo que dicen de <span>N</span>osotros</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ullam veritatis.</p>
+        </div>
+        <div class="content">
+            <div class="box">
+                <div class="imgBx">
+                    <img src="assets/testi1.jpg" alt="">
+                </div>
+                <div class="text">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ullam veritatis ipsam dolore nisi harum ipsa ad ex? Ipsa maiores natus quos! Pariatur itaque porro ea ipsa totam vero cumque.</p>
+                    <h3>Nombre de la persona</h3>
+                </div>
+            </div>
+            <div class="box">
+                <div class="imgBx">
+                    <img src="assets/testi2.jpg" alt="">
+                </div>
+                <div class="text">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ullam veritatis ipsam dolore nisi harum ipsa ad ex? Ipsa maiores natus quos! Pariatur itaque porro ea ipsa totam vero cumque.</p>
+                    <h3>Nombre de la persona</h3>
+                </div>
+            </div>
+            <div class="box">
+                <div class="imgBx">
+                    <img src="assets/testi3.jpg" alt="">
+                </div>
+                <div class="text">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ullam veritatis ipsam dolore nisi harum ipsa ad ex? Ipsa maiores natus quos! Pariatur itaque porro ea ipsa totam vero cumque.</p>
+                    <h3>Nombre de la persona</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Fin sección opiniones -->
+
+     <!-- Inicio sección Contacto -->
+     <section class="contacto" id="contacto">
+        <div class="title">
+            <h2 class="tituloText"><span>C</span>ontáctanos</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ullam veritatis.</p>
+        </div>
+        <div class="formDiv">
+            <h3>Envíanos un mensaje</h3>
+            <form action="submit">
+                <div class="inputBox">
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+                </div>
+                <div class="inputBox">
+                    <input type="text" name="email" id="email" placeholder="Email">
+                </div>
+                <div class="inputBox">
+                    <textarea name="comentario" id="comentario" placeholder="Escribe el texto que quieras"></textarea>
+                </div>
+                <button>ENVIAR</button>
+            </form>
+        </div>
+    </section>
+    <!-- Fin sección contacto -->
+
+    <footer>
+        <p>Copyright&copy; 2022 <span>DeTurnos</span>. Todos los derechos reservados. </p>
+        <!-- lista de redes -->
+    </footer>
+
+</body>
+</html>

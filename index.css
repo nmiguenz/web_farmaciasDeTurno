@@ -1,0 +1,635 @@
+/* Paleta de colores (coolors.co) */
+/* CSS HEX */
+/* --mountain-meadow: #0dbb9dff;
+--maize-crayola: #e9c46aff;
+--outrageous-orange: #ff785aff;
+--eerie-black: #191919ff;
+--independence: #525174ff; */
+
+/* Fuente elegida por defecto */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth; /* afecta al desplazamiento entre secciones */
+}
+
+body{
+    min-height: 1000px;
+}
+
+/* Lo agregue con el about */
+section{
+    padding: 100px;
+}
+
+p{
+    font-weight: 300;
+    color: #111;
+}
+
+/* Bloque home */
+.banner{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(assets/bg.png) ;
+    background-size: cover;   
+}
+
+.banner .content{
+    max-width: 900px;
+    text-align: center ;
+}
+
+.banner .content h2{
+    font-size: 5rem;
+    color: #fff
+}
+
+.banner .content p{
+    font-size: 1rem;
+    color: #fff
+}
+
+.btn{
+    font-size: 1rem;
+    color: #fff;
+    background: #0dbb9d ;
+    display: inline-block;
+    padding: 10px 30px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: 0.5s;
+}
+
+.btn:hover{
+    letter-spacing: 6px;
+}
+/* fin bloque home */
+
+/* Bloque navbar */
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 100px;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.5s;
+}
+
+header.move{
+    background: #fff;
+    padding: 10px 100px;
+    box-shadow: 0 5px 20px rgb(0,0,0,0.05);
+}
+
+header .logo{
+    color: #fff;
+    font-weight: 700;
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+header.move .logo{
+    color: black
+}
+
+header .logo span{
+    color: #0dbb9d;
+    font-weight: 700;
+    font-size: 2rem;
+    text-decoration: none;
+}
+header .logo span img{
+    position: absolute;
+    width: 25px;
+    margin-top: 14px;
+    margin-left: -1px;
+}
+
+header .navigation{
+    position: relative;
+    display: flex;
+
+}
+
+header .navigation li{
+    list-style: none;
+    margin-left: 30px; 
+}
+
+header .navigation li a{
+    text-decoration: none;
+    font-weight: 300;
+    color: #fff;
+}
+
+header.move li a{
+    color: black
+}
+
+header .navigation li a:hover{
+    color: #0dbb9d;
+}
+
+/* Fin bloque navbar */
+
+/* Bloque Nosotros */
+.row{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.row .col50{
+    position: relative;
+    width: 48%;
+}
+
+.tituloText{
+    color: #111;
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.tituloText span{
+    color: #0dbb9d;
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+.row .col50 .imgBx{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.row .col50 .imgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;  /*Encaja al objeto a su contenedor*/
+}
+ 
+/* Fin del bloque Nosotros */
+
+/* Bloque deTurno */
+.title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.atendiendo .content{
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    /* display: inline-grid;
+    grid-template-columns: auto auto auto;
+    margin: 40px 0 40px;
+    padding: 10px;
+    column-gap: 20px;
+    row-gap: 20px; */
+}
+
+.atendiendo .content .box{
+    width: 340px;
+    margin: 20px;
+    border: 15px solid #fff;
+    box-shadow: 0 5px 35px rgba(0,0,0,0.08);
+    /* width: 340px;
+    border: 15px solid #fff;
+    box-shadow: 0 5px 35px rgba(0,0,0,0.08); */
+}
+
+.atendiendo .content .box .ImgBx{
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.atendiendo .content .box .ImgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.atendiendo .content .box .text{
+    padding: 15px 0 5px;
+}
+
+.atendiendo .content .box .text h3{
+    font-weight: 400;
+    color: #111;
+}
+/* Fin del bloque deTurno */
+
+/* Bloque Nosotros */
+/* .nosotros .content{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.nosotros .content .box{
+    width: 250px;
+    margin: 15px;
+}
+
+.nosotros .content .box .ImgBx{
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.nosotros .content .box .ImgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nosotros .content .box .text{
+    padding: 15px 0 5px;
+}
+
+.nosotros .content .box .text h3{
+    font-weight: 400;
+    color: #111;
+} */
+
+.teamBx{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-gap: 30px;
+    max-width: 100%;
+    margin-top: 40px;
+}
+
+.teamBx .member{
+    position: relative;
+    background: #000;
+    min-height: 350px;
+    width: 300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.teamBx .member .imgBx{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.teamBx .member .imgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.teamBx .member .details{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    transition: 0.2s;
+    opacity: 0;
+}
+
+.teamBx .member:hover .details{
+    opacity: 0.9;
+}
+
+.teamBx .member .details h2{
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.teamBx .member .details h2 span{
+    display: block;
+    font-size: 12px;
+    font-weight: 300;
+    color: #0dbb9d;
+}
+/* Fin del bloque nosotros */
+
+/* Bloque opiniones */
+.opiniones{
+    background: url(assets/bg2.jpg);
+    background-size: cover;
+}
+
+.blanco .tituloText,
+.blanco p{
+    color: #fff;
+} 
+
+.opiniones .content{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.opiniones .content .box{
+    width: 340px;
+    margin: 20px;
+    padding: 40px;
+    background: #fff;
+    border: 15px solid #fff;
+    box-shadow: 0 5px 35px rgba(0,0,0,0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.opiniones .content .box .imgBx{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.opiniones .content .box .imgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.opiniones .content .box .text{
+    text-align: center;
+}
+
+.opiniones .content .box .text p{
+    color: #666;
+    font-style: italic;
+}
+
+.opiniones .content .box .text h3{
+    margin-top:  20px;
+    color: #0dbb9d;
+    font-size: 1rem;
+    font-weight: 600;
+}
+/* Fin del bloque opiniones */
+
+/* Bloque contacto */
+.contacto{
+    background: url(assets/bg4.jpg);
+    background-size: cover;
+}
+
+.formDiv{
+    padding: 75px 50px;
+    background: #E9C46A;
+    box-shadow: 0 15px 50px rgb(0,0,0,0.1);
+    max-width: 500px;
+    margin-top: 50px;
+}
+
+.formDiv h3{
+    color: #111;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.formDiv .inputBox{
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+     
+}
+
+.formDiv .inputBox input,
+.formDiv .inputBox textarea{
+    width: 100%;
+    border: 1px solid #555;
+    padding: 10px;
+    color: #111;
+    outline: none;
+    font-size: 16px;
+    font-weight: 300;
+    resize: vertical;
+}
+
+button{
+    font-size: 1rem;
+    color: #fff;
+    background-color: #0dbb9d;
+    padding: 5px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.5s;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover{
+    letter-spacing: 6px;
+}
+/* Fin del bloque contacto */
+
+/* Inicio del bloque footer */
+footer{
+    padding: 20px 40px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+footer p{
+    color:  #333;
+    font-weight: 500;
+}
+
+footer p span{
+    color:  #0dbb9d;
+}
+/* Fin del bloque footer */
+
+/* Media queries */
+/* Tabletas */
+@media (max-width:991px) {
+    header,
+    header.move{
+        padding: 10px 20px;
+    }
+
+    header .navigation{
+        display: none;
+    }
+
+    section{
+        padding: 20px;
+    }
+
+    /* Toggle Menu */
+    .menuToggle{
+        position: relative;
+        width: 40px;
+        height: 40px;
+        background: url(assets/menu.png);
+        background-size: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+    }
+
+    .menuToggle.activar{
+        background: url(assets/close.png);
+        background-size: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    header.move .menuToggle{
+        filter: invert(1); /* pone en negativo a la imagen */
+    }
+
+    header .navigation.activar{
+        width: 100%;
+        height: calc(100% - 68px);
+        position: fixed;
+        top: 68px;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #fff;
+    }
+
+    header .navigation li a{
+        text-decoration: none;
+        color: #111;
+        font-size: 2rem;
+    }
+    /* Fin bloque Toggle Menu */
+
+    .banner .content h2 {
+        font-size: 3rem;
+    }
+
+    /* Bloque About Us */
+    .row{
+        flex-direction: column;
+    }
+    .row .col50{
+        position: relative;
+        width: 100%;
+    }
+    .row .col50 p {
+        height: 100%;
+    }
+    .row .col50 .imgBx{
+        position: relative;
+        width: 100%;
+        height: 300px;
+        margin-top: 20px;
+    }
+
+    /* Bloque de turno */
+    .atendiendo .content {
+        margin-top: 20px;
+    }
+    .atendiendo .content .box {
+        margin: 10px;
+    }
+    .atendiendo .content .box {
+        margin: 10px;
+    }
+    .atendiendo .content .box  .imgBx{
+        height: 260px;
+    }
+}
+
+/* Movil */
+@media (max-width:480px){
+    .tituloText {
+        text-align: center;
+        margin-top: 35px;
+    }
+    p{
+        text-align: center;
+    }
+
+    /* Bloque Nosotros */
+    /* .nosotros .content {
+        margin-top: 20px;
+    }
+    .nosotros .content .box {
+        width: 300px;
+    } */
+
+    /* Opiniones */
+    .opiniones .content {
+        margin-top: 20px;
+    }
+    .opiniones .tituloText {
+        font-size: 2.1rem;
+        line-height: 3rem;
+    }
+    .opiniones .content .box {
+        width: 360px;
+        padding: 30px;
+    }
+
+    /* Contacto */
+    .formDiv {
+        padding: 50px;
+        margin-top: 25px;
+    }
+    footer p {
+        font-size: 12px;
+    }
+}
