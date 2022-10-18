@@ -7,7 +7,7 @@
     <title>De turno</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <link rel="stylesheet" href="index.css">
-    <script type="text/javascript" src="index.js"></script>
+    <script type="module" src="index.js"></script>
 </head>
 <body>
     <header>
@@ -27,7 +27,6 @@
             <li><a href="#contacto" onclick="redirect()">Contacto</a></li>
         </ul>
     </header>
-
     
     <!-- Inicio sección Home -->
     <section class="banner" id="home">
@@ -141,7 +140,7 @@
             <div class="teamBx">
                 <div class="member">
                     <div class="imgBx">
-                        <img src="/assets/pedro.jpg" alt="">
+                        <img src="./assets/pedro.jpg" alt="">
                     </div>
                     <div class="details">
                         <h2>Nicolás Miguenz<br><span>Backend developer</span></h2>
@@ -149,7 +148,7 @@
                 </div>
                 <div class="member">
                     <div class="imgBx">
-                        <img src="/assets/alexis.jpg" alt="">
+                        <img src="./assets/alexis.jpg" alt="">
                     </div>
                     <div class="details">
                         <h2>Nicolás Miguenz<br><span>Backend developer</span></h2>
@@ -157,7 +156,7 @@
                 </div>
                 <div class="member">
                     <div class="imgBx">
-                        <img src="/assets/Nico.jpg" alt="">
+                        <img src="./assets/Nico.jpg" alt="">
                     </div>
                     <div class="details">
                         <h2>Nicolás Miguenz<br><span>Backend developer</span></h2>
@@ -225,7 +224,7 @@
                 <div class="inputBox">
                     <textarea name="comentario" id="comentario" placeholder="Escribe el texto que quieras"></textarea>
                 </div>
-                <button>ENVIAR</button>
+                <button onclick="">ENVIAR</button>
             </form>
         </div>
     </section>
