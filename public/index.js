@@ -1,4 +1,5 @@
 import {getCollection, alta} from './firebase.js';
+import * as acciones from './acciones.js';
 
 const formOp = document.querySelector('form'); 
 
@@ -9,7 +10,6 @@ window.addEventListener('DOMContentLoaded', async () => {
         console.log(element.data());
     });
 });
-
 
 window.addEventListener('scroll', function(){
     const header = document.querySelector('header');
@@ -29,19 +29,3 @@ window.addEventListener('submit', (e)=>{
     alta('comentarios', opinion);
 });
 
-function toggleMenu(){
-    const menuToggle = document.querySelector('.menuToggle');
-    const navigation = document.querySelector('.navigation');
-    menuToggle.classList.toggle('activar');
-    navigation.classList.toggle('activar');
-}
-
-function redirect(){
-    const menuToggle = document.querySelector('.menuToggle');
-    const navigation = document.querySelector('.navigation');
-    if(navigation.classList.value == 'navigation activar'){
-        menuToggle.classList.toggle('activar');
-        navigation.classList.toggle('activar');
-    }
-
-}
