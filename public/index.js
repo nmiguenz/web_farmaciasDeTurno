@@ -36,6 +36,33 @@ window.addEventListener('scroll', function(){
     header.classList.toggle("move", window.scrollY > 0);
 });
 
+// cargo las opiniones
+const opinionCard = document.getElementById('opinar');  
+
+window.addEventListener('DOMContentLoaded', async () => {
+    const querySnapshot2 = await getCollection('comentarios');
+
+    let html = ''
+    
+    querySnapshot2.forEach(element => {
+        let opinar = element.data();
+
+        html += `<!-- modelo 3 -->
+        <div class="box">
+            <div class="imgBx">
+                <img src="assets/testi2.jpg" alt="">
+            </div>
+            <div class="text">
+                <p>${opinar.comentario}</p>
+                <h3>${opinar.nombre}</h3>
+            </div>
+        </div>`
+    });
+
+    opinionCard.innerHTML = html;
+});
+
+
 // Alta de comentarios
 window.addEventListener('submit', (e)=>{
     e.preventDefault();
