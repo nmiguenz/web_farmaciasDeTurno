@@ -285,6 +285,10 @@ header .navigation li a:hover{
     color: #111;
 } */
 
+.nosotros .content .title{
+    text-align: center;
+}
+
 .teamBx{
     position: relative;
     display: grid;
@@ -365,6 +369,10 @@ header .navigation li a:hover{
 .blanco p{
     color: #fff;
 } 
+
+.opiniones .tituloText p{
+    text-align: center;
+}
 
 .opiniones .content{
     display: flex;

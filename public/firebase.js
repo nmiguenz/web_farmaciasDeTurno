@@ -25,4 +25,8 @@ export const getCollection = async (nombreColeccion) => {
 }
 
 //Upload to the database
-export const alta = (nombreColeccion, objeto) =>{ addDoc(collection(db,nombreColeccion),objeto);}
+export const alta = async (nombreColeccion, objeto) =>{ 
+  const docRef = await addDoc(collection(db,nombreColeccion),objeto);
+  return docRef;
+}
+
