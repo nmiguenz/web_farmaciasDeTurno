@@ -3,39 +3,40 @@ import {validaNombre, validarComentario, validarEmail} from './funciones.js';
 
 const formOp = document.querySelector('form');
 const farmaciaCard = document.getElementById('flipCardContainer');  
-
-window.addEventListener('DOMContentLoaded', async () => {
-    const querySnapshot = await getCollection('farmacias');
-
-    let html = ''
-    
-    querySnapshot.forEach(element => {
-        let farmacia = element.data();
-
-        html += `<!-- modelo 2 -->
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <h2>${farmacia.nombre}</h2>
-                </div>
-                <div class="flip-card-back">
-                    <div>
-                        <h3><i class="fa-solid fa-location-dot"></i> <span>Dirección:</span> ${farmacia.direccion + ' ' + farmacia.numero + ', ' + farmacia.localidad} </h3>
-                    </div>
-                    <p><i class="fa-solid fa-phone"></i> <span>Teléfono:</span> ${farmacia.telefono}</p>
-                    <button onclick="mostrarIframe()">VER UBICACION</button>
-                </div>
-            </div>
-        </div>`
-    });
-
-    farmaciaCard.innerHTML = html;
-});
+const divIframe = document.getElementById('iframeDiv'); 
 
 window.addEventListener('scroll', function(){
     const header = document.querySelector('header');
     header.classList.toggle("move", window.scrollY > 0);
 });
+
+// window.addEventListener('DOMContentLoaded', async () => {
+//     const querySnapshot = await getCollection('farmacias');
+
+//     let html = ''
+    
+//     querySnapshot.forEach(element => {
+//         let farmacia = element.data();
+
+//         html += `<!-- modelo 2 -->
+//         <div class="flip-card">
+//             <div class="flip-card-inner">
+//                 <div class="flip-card-front">
+//                     <h2>${farmacia.nombre}</h2>
+//                 </div>
+//                 <div class="flip-card-back">
+//                     <div>
+//                         <h3><i class="fa-solid fa-location-dot"></i> <span>Dirección:</span> ${farmacia.direccion + ' ' + farmacia.numero + ', ' + farmacia.localidad} </h3>
+//                     </div>
+//                     <p><i class="fa-solid fa-phone"></i> <span>Teléfono:</span> ${farmacia.telefono}</p>
+//                     <button id="btnUbicacion">VER UBICACION</button>
+//                 </div>
+//             </div>
+//         </div>`
+//     });
+
+//     farmaciaCard.innerHTML = html;
+// });
 
 // cargo las opiniones
 const opinionCard = document.getElementById('opinar');  

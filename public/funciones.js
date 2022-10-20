@@ -34,3 +34,8 @@ export function validarComentario(e, campo) {
     else
         return true;
 }
+
+// export function mostrarIframe(){
+//     // elemento.innerHtml = mapa;
+//     console.log('hola')
+// }

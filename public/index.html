@@ -11,6 +11,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet" />
     <script type="module" src="index.js"></script>
     <script type="text/javascript" src="acciones.js"></script>
+
 </head>
 <body>
     <header>
@@ -47,7 +48,7 @@
             <div class="col50">
                 <h2 class="tituloText"><span>A</span>bout Us</h2>
                 <p>DeTurno.com fue fundado en 2022 para brindar la informacion necesaria a los usuarios que buscan negocios de alguna zona en particular, indicando horarios y domicilio de trabajo, ahorrandole tiempo al usuario para encontrar lo deseado.
-                <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                <br><br><br><br><br><br><br><br><br><br>
                 
                 </p>
             </div>
@@ -67,33 +68,27 @@
             <h2 class="tituloText">De <span>T</span>urno</h2>
             <p>Farmacias que se encuentran atendiendo en este momento:</p>
         </div>
-        <div class="content" id="flipCardContainer">
-            <!-- <div class="box">
-                <div class="ImgBx">
-                    <img src="assets/menu1.jpg" alt="">
+        <!-- <div class="content" id="flipCardContainer"> -->
+            <div class="content" id="app">
+                <div class="flip-card" v-for="farmacia in farmacias">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <h2>{{farmacia.nombre}}</h2>
+                        </div>
+                        <div class="flip-card-back">
+                            <div>
+                                <h3><i class="fa-solid fa-location-dot"></i> <span>Dirección:</span> {{farmacia.direccion}} {{farmacia.nombre}}</h3>
+                            </div>
+                            <p><i class="fa-solid fa-phone"></i> <span>Teléfono:</span> {{farmacia.telefono}}</p>
+                            <button onclick="mostrarIFrame()">VER UBICACION</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="text">
-                    <h3>Vacunas</h3>
-                </div>
-            </div>
-            <div class="box">
-                <div class="ImgBx">
-                    <img src="assets/menu2.jpg" alt="">
-                </div>
-                <div class="text">
-                    <h3>Jarabes</h3>
-                </div>
-            </div>
-            <div class="box">
-                <div class="ImgBx">
-                    <img src="assets/menu3.jpg" alt="">
-                </div>
-                <div class="text">
-                    <h3>Pastillas</h3>
-                </div>
-            </div> -->
+
             
         </div>
+
+        <!-- Acá intentamos mostrar el IFRAME que se encuentra en el campo MAPA del objeto  -->
         <div class="title">
             <div class="iframeDiv"></div>
         </div>
@@ -103,6 +98,7 @@
     <!-- Fin sección deTurno -->
 
     <!-- Inicio sección Nosotros -->
+
     <!-- <section class="nosotros" id="nosotros">
         <div class="title">
             <h2 class="tituloText"><span>N</span>osotros</h2>
@@ -165,7 +161,7 @@
                         <img src="./assets/Nico.jpg" alt="">
                     </div>
                     <div class="details">
-                        <h2>Nicolás Miguenz<br><span>Backend developer</span></h2>
+                        <h2>Nicolás Miguenz<br><span>Desarrollador Backend</span></h2>
                     </div>
                 </div>
             </div>
@@ -181,33 +177,6 @@
             <p>Algunas opiniones de usuarios que consumen nuestro servicio.</p>
         </div>
         <div class="content" id="opinar">
-            <!--<div class="box">
-                    <div class="imgBx">
-                        <img src="assets/testi1.jpg" alt="">
-                    </div>
-                    <div class="text">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ullam veritatis ipsam dolore nisi harum ipsa ad ex? Ipsa maiores natus quos! Pariatur itaque porro ea ipsa totam vero cumque.</p>
-                        <h3>Nombre de la persona</h3>
-                    </div>
-                </div>
-                <div class="box">
-                    <div class="imgBx">
-                        <img src="assets/testi2.jpg" alt="">
-                    </div>
-                    <div class="text">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ullam veritatis ipsam dolore nisi harum ipsa ad ex? Ipsa maiores natus quos! Pariatur itaque porro ea ipsa totam vero cumque.</p>
-                        <h3>Nombre de la persona</h3>
-                    </div>
-                </div>
-                <div class="box">
-                    <div class="imgBx">
-                        <img src="assets/testi3.jpg" alt="">
-                    </div>
-                    <div class="text">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ullam veritatis ipsam dolore nisi harum ipsa ad ex? Ipsa maiores natus quos! Pariatur itaque porro ea ipsa totam vero cumque.</p>
-                        <h3>Nombre de la persona</h3>
-                    </div>
-            </div> -->
             
         </div>
     </section>
@@ -241,6 +210,12 @@
         <p>Copyright&copy; 2022 <span>DeTurnos</span>. Todos los derechos reservados. </p>
         <!-- lista de redes -->
     </footer>
+
+    <!--CDN de Vue, version de desarrollo -->
+    <script src="https://unpkg.com/vue@next"></script>
+
+    <!-- Script con los componentes -->
+    <script type="module" src="cardsVue.js"></script>
 
 </body>
 </html>
