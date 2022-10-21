@@ -1,4 +1,4 @@
-import {getCollection, alta} from './firebase.js';
+import {getCollection, alta, onGetCollection} from './firebase.js';
 import {validaNombre, validarComentario, validarEmail} from './funciones.js';
 
 const formOp = document.querySelector('form');
@@ -10,58 +10,76 @@ window.addEventListener('scroll', function(){
     header.classList.toggle("move", window.scrollY > 0);
 });
 
-// window.addEventListener('DOMContentLoaded', async () => {
-//     const querySnapshot = await getCollection('farmacias');
+window.addEventListener('DOMContentLoaded', async () => {
+    const querySnapshot = await getCollection('farmacias');
 
-//     let html = ''
+    let html = ''
     
-//     querySnapshot.forEach(element => {
-//         let farmacia = element.data();
+    querySnapshot.forEach(element => {
+        let farmacia = element.data();
+        let i = 0;
 
-//         html += `<!-- modelo 2 -->
-//         <div class="flip-card">
-//             <div class="flip-card-inner">
-//                 <div class="flip-card-front">
-//                     <h2>${farmacia.nombre}</h2>
-//                 </div>
-//                 <div class="flip-card-back">
-//                     <div>
-//                         <h3><i class="fa-solid fa-location-dot"></i> <span>Dirección:</span> ${farmacia.direccion + ' ' + farmacia.numero + ', ' + farmacia.localidad} </h3>
-//                     </div>
-//                     <p><i class="fa-solid fa-phone"></i> <span>Teléfono:</span> ${farmacia.telefono}</p>
-//                     <button id="btnUbicacion">VER UBICACION</button>
-//                 </div>
-//             </div>
-//         </div>`
-//     });
+        html += `<!-- modelo 2 -->
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <h2>${farmacia.nombre}</h2>
+                </div>
+                <div class="flip-card-back">
+                    <div>
+                        <h3><i class="fa-solid fa-location-dot"></i> <span>Dirección:</span> ${farmacia.direccion + ' ' + farmacia.numero + ', ' + farmacia.localidad} </h3>
+                    </div>
+                    <p><i class="fa-solid fa-phone"></i> <span>Teléfono:</span> ${farmacia.telefono}</p>
+                    <button id="btnUbicacion${i}">VER UBICACION</button>
+                </div>
+            </div>
+        </div>`
 
-//     farmaciaCard.innerHTML = html;
-// });
+        // var elementoBtn = 'btnUbicacion'+i;
+        // if(html !== ''){
+        //     document.getElementById(elementoBtn).addEventListener('click', (farmacia) => {
+        //         document.getElementById(divIframe).innerHTML = `<div class="iframeDiv">
+        //         <i class="fa-sharp fa-solid fa-x" onclick="ocultarIFrame()"></i>
+        //         ${farmacia.mapa}
+        //     </div>`
+        //     })
+        // };
+
+        i++;
+    });
+
+    farmaciaCard.innerHTML = html;
+});
 
 // cargo las opiniones
 const opinionCard = document.getElementById('opinar');  
 
 window.addEventListener('DOMContentLoaded', async () => {
-    const querySnapshot2 = await getCollection('comentarios');
 
-    let html = ''
+    onGetCollection('comentarios', (querySnapshot2) => {
+
+        let html = ''
+        
+        querySnapshot2.forEach(element => {
+            let opinar = element.data();
     
-    querySnapshot2.forEach(element => {
-        let opinar = element.data();
+            html += `<!-- modelo 3 -->
+            <div class="box">
+                <div class="imgBx">
+                    <img src="assets/testi2.jpg" alt="">
+                </div>
+                <div class="text">
+                    <p>${opinar.comentario}</p>
+                    <h3>${opinar.nombre}</h3>
+                </div>
+            </div>`
+        });
+    
+        opinionCard.innerHTML = html;
 
-        html += `<!-- modelo 3 -->
-        <div class="box">
-            <div class="imgBx">
-                <img src="assets/testi2.jpg" alt="">
-            </div>
-            <div class="text">
-                <p>${opinar.comentario}</p>
-                <h3>${opinar.nombre}</h3>
-            </div>
-        </div>`
-    });
+    })
+    // const querySnapshot2 = await getCollection('comentarios');
 
-    opinionCard.innerHTML = html;
 });
 
 

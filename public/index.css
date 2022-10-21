@@ -245,6 +245,19 @@ header .navigation li a:hover{
     font-weight: 400;
     color: #111;
 }
+
+.atendiendo .title .iframeDiv{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 30px 30px;
+    background-color: rgb(236, 236, 236);
+}
+
+.atendiendo .title .iframeDiv i{
+    margin-bottom: 20px;
+    align-self: flex-end;
+}
+
 /* Fin del bloque deTurno */
 
 /* Bloque Nosotros */

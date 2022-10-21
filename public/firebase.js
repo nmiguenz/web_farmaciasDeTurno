@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
-import { getFirestore, collection, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-firestore.js"
+import { getFirestore, collection, getDocs, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-firestore.js"
 
 //Firebase configuration
 const firebaseConfig = {
@@ -30,3 +30,4 @@ export const alta = async (nombreColeccion, objeto) =>{
   return docRef;
 }
 
+export const onGetCollection = async (nombreColeccion, callback) => onSnapshot(collection(db, nombreColeccion), callback)

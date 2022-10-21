@@ -14,3 +14,16 @@ const redirect = () =>{
     }
 
 }
+
+function mostrarIFrame(position){
+    let valor = ''+position;
+    const iFrame = document.querySelector(valor);
+    navigation.classList.toggle('activar');
+}
+
+function ocultarIFrame(){
+    let padre = document.getElementById("divIframe");
+    let cross = document.querySelector('.iframeDiv');
+    padre.removeChild(cross);
+    
+}
