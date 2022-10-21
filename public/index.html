@@ -89,12 +89,7 @@
         </div>
 
         <!-- Acá intentamos mostrar el IFRAME que se encuentra en el campo MAPA del objeto  -->
-        <div class="title" id="divIframe">
-            <!-- <div class="iframeDiv">
-                <i class="fa-sharp fa-solid fa-x" onclick="ocultarIFrame()"></i>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13136.590722976262!2d-58.565810549999995!3d-34.60042695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb833dd4b7c6f%3A0x3fe5a1303b8936c8!2sPlaza%20Fray%20Luis%20Beltr%C3%A1n!5e0!3m2!1ses!2sar!4v1666308848366!5m2!1ses!2sar" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div> -->
-        </div>
+        <div class="title" id="divIframe"></div>
 
         
     </section>
@@ -193,9 +188,9 @@
         </div>
         <div class="formDiv">
             <h3>Envíanos un mensaje</h3>
-            <form action="submit">
+            <form action="submit" id="formComentario">
                 <div class="inputBox">
-                    <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
                 </div>
                 <div class="inputBox">
                     <input type="email" name="email" id="email" placeholder="Email">

@@ -2,8 +2,8 @@ import {getCollection, alta, onGetCollection} from './firebase.js';
 import {validaNombre, validarComentario, validarEmail} from './funciones.js';
 
 const formOp = document.querySelector('form');
-const farmaciaCard = document.getElementById('flipCardContainer');  
-const divIframe = document.getElementById('iframeDiv'); 
+const farmaciaCardContainer = document.getElementById('flipCardContainer');  
+const divIframe = document.getElementById('divIframe'); 
 
 window.addEventListener('scroll', function(){
     const header = document.querySelector('header');
@@ -17,7 +17,6 @@ window.addEventListener('DOMContentLoaded', async () => {
     
     querySnapshot.forEach(element => {
         let farmacia = element.data();
-        let i = 0;
 
         html += `<!-- modelo 2 -->
         <div class="flip-card">
@@ -30,25 +29,26 @@ window.addEventListener('DOMContentLoaded', async () => {
                         <h3><i class="fa-solid fa-location-dot"></i> <span>Dirección:</span> ${farmacia.direccion + ' ' + farmacia.numero + ', ' + farmacia.localidad} </h3>
                     </div>
                     <p><i class="fa-solid fa-phone"></i> <span>Teléfono:</span> ${farmacia.telefono}</p>
-                    <button id="btnUbicacion${i}">VER UBICACION</button>
+                    <button id="btnUbicacion" data-id='${farmacia.mapa}'>VER UBICACION</button>
                 </div>
             </div>
         </div>`
 
-        // var elementoBtn = 'btnUbicacion'+i;
-        // if(html !== ''){
-        //     document.getElementById(elementoBtn).addEventListener('click', (farmacia) => {
-        //         document.getElementById(divIframe).innerHTML = `<div class="iframeDiv">
-        //         <i class="fa-sharp fa-solid fa-x" onclick="ocultarIFrame()"></i>
-        //         ${farmacia.mapa}
-        //     </div>`
-        //     })
-        // };
-
-        i++;
     });
+    farmaciaCardContainer.innerHTML = html;
 
-    farmaciaCard.innerHTML = html;
+    const btnUbicacion = farmaciaCardContainer.querySelectorAll("#btnUbicacion");
+    
+    btnUbicacion.forEach(btn =>{
+        btn.addEventListener('click', (e) => {
+            const frame = e.target.dataset.id;
+
+            divIframe.innerHTML = ` <div class="iframeDiv">
+                                        <i class="fa-sharp fa-solid fa-x" onclick="ocultarIFrame()"></i>
+                                        ${frame}
+                                    </div>`;
+        });
+    });
 });
 
 // cargo las opiniones
@@ -77,10 +77,15 @@ window.addEventListener('DOMContentLoaded', async () => {
     
         opinionCard.innerHTML = html;
 
-    })
-    // const querySnapshot2 = await getCollection('comentarios');
-
+    });
 });
+
+//Validación de nombre
+const myInputArea = document.querySelector("#nombre")
+myInputArea.addEventListener("input", (e)=>{
+  const myInputText = validaNombre(e.target.value)
+  console.log(myInputText)
+})
 
 
 // Alta de comentarios

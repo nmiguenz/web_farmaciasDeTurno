@@ -12,13 +12,6 @@ const redirect = () =>{
         menuToggle.classList.toggle('activar');
         navigation.classList.toggle('activar');
     }
-
-}
-
-function mostrarIFrame(position){
-    let valor = ''+position;
-    const iFrame = document.querySelector(valor);
-    navigation.classList.toggle('activar');
 }
 
 function ocultarIFrame(){
