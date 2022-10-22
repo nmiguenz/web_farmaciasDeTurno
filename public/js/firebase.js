@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
-import { getFirestore, collection, getDocs, addDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-firestore.js"
+import { getFirestore, collection, getDocs, addDoc, onSnapshot, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-firestore.js"
 
 //Firebase configuration
 const firebaseConfig = {
@@ -30,4 +30,13 @@ export const alta = async (nombreColeccion, objeto) =>{
   return docRef;
 }
 
-export const onGetCollection = async (nombreColeccion, callback) => onSnapshot(collection(db, nombreColeccion), callback)
+//Método GET
+// Escucha los cambios en la base 
+// Tiene incluido query de ordenamiento y limite
+export const onGetCollection = async (nombreColeccion, campoOrdernamiento, formaOrdenamiento, cantidad, callback) =>{
+  var colecctionRef = collection(db, nombreColeccion);
+  const queryRes = query(colecctionRef, orderBy(campoOrdernamiento, formaOrdenamiento), limit(cantidad));
+  onSnapshot(queryRes, callback);
+} 
+
+

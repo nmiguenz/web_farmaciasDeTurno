@@ -1,0 +1,596 @@
+/* Paleta de colores (coolors.co) */
+/* CSS HEX */
+/* --mountain-meadow: #0dbb9dff;
+--maize-crayola: #e9c46aff;
+--outrageous-orange: #ff785aff;
+--eerie-black: #191919ff;
+--independence: #525174ff; */
+
+/* Fuente elegida por defecto */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth; /* afecta al desplazamiento entre secciones */
+}
+
+body{
+    min-height: 1000px;
+}
+
+/* Lo agregue con el about */
+section{
+    padding: 100px;
+}
+
+p{
+    font-weight: 300;
+    color: #111;
+}
+
+/* Bloque home */
+.banner{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(../assets/bg.png) ;
+    background-size: cover;   
+}
+
+.banner .content{
+    max-width: 900px;
+    text-align: center ;
+}
+
+.banner .content h2{
+    font-size: 5rem;
+    color: #fff
+}
+
+.banner .content p{
+    font-size: 1rem;
+    color: #fff
+}
+
+.btn{
+    font-size: 1rem;
+    color: #fff;
+    background: #0dbb9d ;
+    display: inline-block;
+    padding: 10px 30px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: 0.5s;
+}
+
+.btn:hover{
+    letter-spacing: 6px;
+}
+
+.tituloText{
+    color: #111;
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.tituloText span{
+    color: #0dbb9d;
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+/* fin bloque home */
+
+/* Bloque navbar */
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    z-index: 1;
+    background-color: #0dbb9d;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.5s;
+}
+
+header.move{
+    background: #fff;
+    padding: 10px 100px;
+    box-shadow: 0 5px 20px rgb(0,0,0,0.05);
+}
+
+header .logo{
+    color: #000;
+    font-weight: 700;
+    font-size: 2rem;
+    text-decoration: none;
+}
+
+header.move .logo{
+    color: black
+}
+
+header .logo span{
+    color: #0dbb9d;
+    font-weight: 700;
+    font-size: 2rem;
+    text-decoration: none;
+}
+header .logo span img{
+    position: absolute;
+    width: 25px;
+    margin-top: 14px;
+    margin-left: -1px;
+}
+
+header .navigation{
+    position: relative;
+    display: flex;
+
+}
+
+header .navigation li{
+    list-style: none;
+    margin-left: 30px; 
+}
+
+header .navigation li a{
+    text-decoration: none;
+    font-weight: 300;
+    color: black;
+}
+
+header.move li a{
+    color: black
+}
+
+header .navigation li a:hover{
+    color: #E9C46A;
+}
+
+/* Fin bloque navbar */
+
+/* Bloque deTurno */
+.title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.atendiendo .content{
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.atendiendo .content .box{
+    width: 340px;
+    margin: 20px;
+    border: 15px solid #fff;
+    box-shadow: 0 5px 35px rgba(0,0,0,0.08);
+}
+
+.atendiendo .content .box .ImgBx{
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.atendiendo .content .box .ImgBx img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.atendiendo .content .box .text{
+    padding: 15px 0 5px;
+}
+
+.atendiendo .content .box .text h3{
+    font-weight: 400;
+    color: #111;
+}
+
+.iframeVisible{
+    left: 0;
+    background: #0cb89bfa;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.atendiendo .title .iframeDiv{
+    display: flex;
+    flex-direction: column;
+    padding: 10px 30px 30px;
+    background-color: rgb(236, 236, 236);
+}
+
+.atendiendo .title .iframeDiv i{
+    margin-bottom: 20px;
+    align-self: flex-end;
+}
+/* Fin del bloque deTurno */
+
+/* Bloque flipCards */
+.flip-card{
+    background-color: transparent;
+    margin: 20px;
+    width: 300px;
+    height: 300px;
+    perspective: 1000px;
+}
+
+.flip-card-inner{
+    position:relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner{
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hiden;
+    border-radius: 16px;
+}
+
+.flip-card-front{
+    background-image: linear-gradient(
+        45deg, #0dbb9d, #000
+    );
+}
+
+.flip-card-back{
+    background-image: linear-gradient(
+        225deg, #0dbb9d, #000
+    );
+    color: #fff;
+    transform: rotateY(180deg);
+}
+
+.flip-card-back h3{
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+.flip-card_back h1{
+    margin: 0;
+}
+/* Fin del bloque flipCards */
+
+/* Bloque alta */
+.alta{
+    background-color: #eac96b;
+}
+
+.formDiv{
+    padding: 50px 50px;
+    background: #E9C46A;
+    box-shadow: 0 15px 50px rgb(0,0,0,0.1);
+    max-width: 100%;
+    margin-top: 30px;
+}
+
+.formDiv h3{
+    color: #111;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.formDiv .row{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.formDiv .inputBox{
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;   
+}
+
+.formDiv .inputBox input,
+.formDiv .inputBox textarea{
+    width: 100%;
+    border: 1px solid #555;
+    padding: 10px;
+    color: #111;
+    outline: none;
+    font-size: 16px;
+    font-weight: 300;
+    resize: vertical;
+}
+
+.formDiv .row .inputBox50 input{
+    width: 100%;
+}
+
+#inputBox_numero, #inputBox_telefono{
+    margin-left: 5px;
+}
+
+button{
+    font-size: 1rem;
+    color: #fff;
+    background-color: #0dbb9d;
+    padding: 5px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.5s;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover{
+    letter-spacing: 6px;
+}
+
+.formulario_grupo{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+    /* Validación de formulario */
+    .input-incorrecto{
+        border: 2px solid red !important
+    }
+
+    .input-correcto{
+        border: 2px solid #1ed12d !important; 
+    }
+
+    .iconInput{
+        position: absolute;
+        left: 90%;
+        top: 15px;
+    }
+
+    .iconInput .fa-solid, .fa-circle-check {
+        font-size: 20px;
+        color: #1ed12d;
+    }
+
+    .iconInput .fa-solid, .fa-circle-xmark{
+        font-size: 20px;
+        color: red;
+    }
+
+    .error_nombre, 
+    .error_mapa,
+    .error_comentario,
+    .error_direccion,
+    .error_numero,
+    .error_localidad,
+    .error_telefono{
+        font-size: 14px;
+        font-weight: 400;
+        margin-bottom: 5px;
+        display: none;
+        margin-top: -15px;
+    }
+
+    .input_error_activo{
+        display: block;
+        color: red;
+    }
+
+    .formComentario-msg {
+        display: none;
+        font-size: 13px;
+        background-color: red;
+        padding: 10px;
+        margin: -15px 0 10px;
+    }
+
+    .formComentario-msg-active {
+        display: block;
+    }
+
+    .formComentario-msg-active p {
+        color: #fff;
+    }
+
+    .formulario_mensaje-exito {
+        font-size: 14px;
+        margin-top: 1rem;
+        color: #119200;
+        display: none;
+    }
+
+    .formulario_mensaje-exito-activo {
+        display: block;
+    }
+    /* Fin bloque validacion */
+/* Fin del bloque alta */
+
+/* Inicio del bloque footer */
+footer{
+    padding: 20px 40px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+footer p{
+    color:  #333;
+    font-weight: 500;
+}
+
+footer p span{
+    color:  #0dbb9d;
+}
+/* Fin del bloque footer */
+
+/* Media queries */
+/* Tabletas */
+@media (max-width:991px) {
+    header,
+    header.move{
+        padding: 10px 20px;
+    }
+
+    header .navigation{
+        display: none;
+    }
+
+    section{
+        padding: 20px;
+    }
+
+    /* Toggle Menu */
+    .menuToggle{
+        position: relative;
+        width: 40px;
+        height: 40px;
+        background: url(../assets/menu.png);
+        background-size: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+    }
+
+    .menuToggle.activar{
+        background: url(../assets/close.png);
+        background-size: 30px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    header.move .menuToggle{
+        filter: invert(1); /* pone en negativo a la imagen */
+    }
+
+    header .navigation.activar{
+        width: 100%;
+        height: calc(100% - 68px);
+        position: fixed;
+        top: 68px;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #fff;
+    }
+
+    header .navigation li a{
+        text-decoration: none;
+        color: #111;
+        font-size: 2rem;
+    }
+    /* Fin bloque Toggle Menu */
+
+    .banner .content h2 {
+        font-size: 3rem;
+    }
+
+    /* Bloque About Us */
+    .row{
+        flex-direction: column;
+    }
+    .row .col50{
+        position: relative;
+        width: 100%;
+    }
+    .row .col50 p {
+        height: 100%;
+    }
+    .row .col50 .imgBx{
+        position: relative;
+        width: 100%;
+        height: 300px;
+        margin-top: 20px;
+    }
+
+    /* Bloque de turno */
+    .atendiendo .content {
+        margin-top: 20px;
+    }
+    .atendiendo .content .box {
+        margin: 10px;
+    }
+    .atendiendo .content .box {
+        margin: 10px;
+    }
+    .atendiendo .content .box  .imgBx{
+        height: 260px;
+    }
+}
+
+/* Movil */
+@media (max-width:400px){
+
+    .banner .content h2 {
+        font-size: 2.5rem;
+    }
+
+    .tituloText {
+        text-align: center;
+        margin-top: 35px;
+    }
+    p{
+        text-align: center;
+    }
+
+    /* alta */
+    .alta .content {
+        margin-top: 20px;
+    }
+    .alta .tituloText {
+        font-size: 2.1rem;
+        line-height: 3rem;
+    }
+    .alta .content .box {
+        width: 360px;
+        padding: 30px;
+    }
+
+    /* alta */
+    .formDiv {
+        padding: 50px;
+        margin-top: 25px;
+    }
+    footer p {
+        font-size: 12px;
+    }
+}
+

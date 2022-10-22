@@ -17,6 +17,11 @@ window.addEventListener('scroll', function(){
  
 //Carga de las CARDS con las farmacias de turno
 window.addEventListener('DOMContentLoaded', async () => {
+
+    let fecha = Date.now();
+    const hoy = new Date(fecha)
+    console.log(hoy.getDay()) //siendo 0 (Domingo) el primer día, 1 (Lunes) el segundo, etcétera.
+
     const querySnapshot = await getCollection('farmacias');
     let html = ''
     
@@ -65,7 +70,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 // Carga permanente de las opiniones
 window.addEventListener('DOMContentLoaded', async () => {
 
-    onGetCollection('comentarios', (querySnapshot2) => {
+    onGetCollection('comentarios', 'timestamp', 'desc', 3, (querySnapshot2) => {
         let html = ''
         
         querySnapshot2.forEach(element => {
@@ -74,7 +79,7 @@ window.addEventListener('DOMContentLoaded', async () => {
             html += `<!-- modelo 3 -->
             <div class="box">
                 <div class="imgBx">
-                    <img src="assets/testi2.jpg" alt="">
+                    <img src="../assets/testi2.jpg" alt="">
                 </div>
                 <div class="text">
                     <p>${opinar.comentario}</p>
