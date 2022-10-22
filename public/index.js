@@ -1,18 +1,23 @@
 import {getCollection, alta, onGetCollection} from './firebase.js';
-import {validaNombre, validarComentario, validarEmail} from './funciones.js';
+import { validarFormulario, campos} from './funciones.js';
 
-const formOp = document.querySelector('form');
+//Constantes
 const farmaciaCardContainer = document.getElementById('flipCardContainer');  
-const divIframe = document.getElementById('divIframe'); 
+const divIframe = document.getElementById('divIframe');
+const opinionCard = document.getElementById('opinar');
+const formularioComent = document.querySelector('form');
+const inputsComent = document.querySelectorAll('.formDiv input');
+const textareaComent = document.querySelectorAll('.formDiv textarea');
 
+//Comportamiento del NAVBAR al hacer scroll
 window.addEventListener('scroll', function(){
     const header = document.querySelector('header');
     header.classList.toggle("move", window.scrollY > 0);
 });
-
+ 
+//Carga de las CARDS con las farmacias de turno
 window.addEventListener('DOMContentLoaded', async () => {
     const querySnapshot = await getCollection('farmacias');
-
     let html = ''
     
     querySnapshot.forEach(element => {
@@ -47,17 +52,20 @@ window.addEventListener('DOMContentLoaded', async () => {
                                         <i class="fa-sharp fa-solid fa-x" onclick="ocultarIFrame()"></i>
                                         ${frame}
                                     </div>`;
+            
+            document.querySelector('#divIframe').classList.toggle('iframeVisible'); //Activa/desactiav el Iframe en una especie de modal
+
+            //Hace un scroll hasta el inicio del Modal
+            let coords = document.querySelector('#divIframe').getBoundingClientRect();
+            window.scroll(0, coords.top + scrollY);
         });
     });
 });
 
-// cargo las opiniones
-const opinionCard = document.getElementById('opinar');  
-
+// Carga permanente de las opiniones
 window.addEventListener('DOMContentLoaded', async () => {
 
     onGetCollection('comentarios', (querySnapshot2) => {
-
         let html = ''
         
         querySnapshot2.forEach(element => {
@@ -76,34 +84,51 @@ window.addEventListener('DOMContentLoaded', async () => {
         });
     
         opinionCard.innerHTML = html;
-
     });
 });
 
-//Validación de nombre
-const myInputArea = document.querySelector("#nombre")
-myInputArea.addEventListener("input", (e)=>{
-  const myInputText = validaNombre(e.target.value)
-  console.log(myInputText)
+//Se agrega addEventListener a los INPUTS 
+inputsComent.forEach((input) =>{
+    input.addEventListener('keyup', validarFormulario) //Evento que controla cuando se suelta una tecla
+    input.addEventListener('blur', validarFormulario) //Evento que controla cuando se presiona fuera del elemento
 })
 
+//Se agrega addEventListener a los TEXTAREA 
+textareaComent.forEach((input) =>{
+    input.addEventListener('keyup', validarFormulario) //Evento que controla cuando se suelta una tecla
+    input.addEventListener('blur', validarFormulario) //Evento que controla cuando se presiona fuera del elemento
+})
 
-// Alta de comentarios
+//SUBMIT de un nuevo comentario
 window.addEventListener('submit', async (e)=>{
     e.preventDefault();
     
-    const opinion = {
-        nombre: formOp['nombre'].value,
-        apellido: formOp['email'].value,
-        comentario: formOp['comentario'].value
-    };
+    if(campos.nombre && campos.email && campos.comentario){
+        const timestamp = new Date().getTime();
+        const opinion = {
+            nombre: formularioComent['nombre'].value,
+            apellido: formularioComent['email'].value,
+            comentario: formularioComent['comentario'].value,
+            timestamp: timestamp
+        };
 
-    if ( validaNombre(e, opinion.nombre) && 
-            validarEmail(e, opinion.apellido) &&
-            validarComentario(e, opinion.comentario))
-    {
+        //ALTA de un comentario
         await alta('comentarios', opinion)
-        .then( (resp) => {if(resp.id) formOp.reset()})
+        .then( (resp) => {
+            //Si fue un éxito el alta, reseteo del formulario
+            if(resp.id){
+                formularioComent.reset();
+                document.querySelectorAll('.iconInput').forEach((icono) => {icono.classList.remove('fa-circle-check');});
+                document.querySelectorAll('input').forEach((input) => {input.classList.remove('input-correcto');});
+                document.querySelectorAll('textarea').forEach((input) => {input.classList.remove('input-correcto');});
+                document.getElementById('formulario_mensaje-exito').classList.add('formulario_mensaje-exito-activo');
+                setTimeout(() => {
+                    document.getElementById('formulario_mensaje-exito').classList.remove('formulario_mensaje-exito-activo');
+                }, 2500);
+            }
+        });
     }
-
+    else{
+        document.getElementById('formComentario-msg').classList.add('formComentario-msg-active')
+    }
 });

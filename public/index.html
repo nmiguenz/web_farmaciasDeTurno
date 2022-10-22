@@ -17,18 +17,16 @@
     <header>
         <a href="" class="logo">De turn<span><img src="assets/logo.png" alt=""></span></a>
 
-        <div class="menuToggle" onclick="toggleMenu()">
-
-        </div>
+        <div class="menuToggle" onclick="toggleMenu()"></div>
 
         <!-- lista para vista fullscreen -->
         <ul class="navigation">
-            <li><a href="#home" onclick="redirect()">Home</a></li>
-            <li><a href="#about" onclick="redirect()">About</a></li>
-            <li><a href="#atendiendo" onclick="redirect()">De turno</a></li>
-            <li><a href="#nosotros" onclick="redirect()">Nosotros</a></li>
-            <li><a href="#opiniones" onclick="redirect()">Opiniones</a></li>
-            <li><a href="#contacto" onclick="redirect()">Contacto</a></li>
+            <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+            <li><a href="#about" onclick="toggleMenu()">About</a></li>
+            <li><a href="#atendiendo" onclick="toggleMenu()">De turno</a></li>
+            <li><a href="#nosotros" onclick="toggleMenu()">Nosotros</a></li>
+            <li><a href="#opiniones" onclick="toggleMenu()">Opiniones</a></li>
+            <li><a href="#contacto" onclick="toggleMenu()">Contacto</a></li>
         </ul>
     </header>
     
@@ -62,75 +60,19 @@
     <!-- Fin sección about -->
 
     <!-- Inicio sección deTurno -->
-    <!-- Esto habría que hacerlo con Vue para que podamos hacer v-for -->
     <section class="atendiendo" id="atendiendo">
         <div class="title">
             <h2 class="tituloText">De <span>T</span>urno</h2>
             <p>Farmacias que se encuentran atendiendo en este momento:</p>
         </div>
-        <div class="content" id="flipCardContainer">
-            <!-- <div class="content" id="app">
-                <div class="flip-card" v-for="farmacia in farmacias">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <h2>{{farmacia.nombre}}</h2>
-                        </div>
-                        <div class="flip-card-back">
-                            <div>
-                                <h3><i class="fa-solid fa-location-dot"></i> <span>Dirección:</span> {{farmacia.direccion}} {{farmacia.nombre}}</h3>
-                            </div>
-                            <p><i class="fa-solid fa-phone"></i> <span>Teléfono:</span> {{farmacia.telefono}}</p>
-                            <button onclick="mostrarIFrame()">VER UBICACION</button>
-                        </div>
-                    </div>
-                </div> -->
+        <div class="content" id="flipCardContainer"></div>
 
-            
-        </div>
-
-        <!-- Acá intentamos mostrar el IFRAME que se encuentra en el campo MAPA del objeto  -->
+        <!-- Acá se carga el iframe con la ubicación de la farmacia  -->
         <div class="title" id="divIframe"></div>
-
-        
     </section>
     <!-- Fin sección deTurno -->
 
     <!-- Inicio sección Nosotros -->
-
-    <!-- <section class="nosotros" id="nosotros">
-        <div class="title">
-            <h2 class="tituloText"><span>N</span>osotros</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ullam veritatis.</p>
-        </div>
-        <div class="content">
-            <div class="box">
-                <div class="ImgBx">
-                    <img src="assets/expert1.jpg" alt="">
-                </div>
-                <div class="text">
-                    <h3>Nicolás Miguenz</h3>
-                </div>
-            </div>
-            <div class="box">
-                <div class="ImgBx">
-                    <img src="assets/expert2.jpg" alt="">
-                </div>
-                <div class="text">
-                    <h3>Nicolás Miguenz</h3>
-                </div>
-            </div>
-            <div class="box">
-                <div class="ImgBx">
-                    <img src="assets/expert3.jpg" alt="">
-                </div>
-                <div class="text">
-                    <h3>Nicolás Miguenz</h3>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- Nosotros 2 -->
     <section class="nosotros" id="nosotros">
         <div class="content">
             <div class="title">
@@ -164,7 +106,6 @@
                 </div>
             </div>
         </div>
-
     </section>
      <!-- Fin sección Nosotros -->
 
@@ -174,9 +115,7 @@
             <h2 class="tituloText">Lo que dicen de <span>N</span>osotros</h2>
             <p>Algunas opiniones de usuarios que consumen nuestro servicio.</p>
         </div>
-        <div class="content" id="opinar">
-            
-        </div>
+        <div class="content" id="opinar"></div>
     </section>
     <!-- Fin sección opiniones -->
 
@@ -189,16 +128,28 @@
         <div class="formDiv">
             <h3>Envíanos un mensaje</h3>
             <form action="submit" id="formComentario">
-                <div class="inputBox">
-                    <input type="text" name="nombre" id="nombre" placeholder="Nombre" required>
+                <div class="inputBox" id="inputBox_nombre">
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+                    <i class="iconInput fa-solid"></i>
                 </div>
-                <div class="inputBox">
+                <p class="error_nombre">De 4 a 16 dígitos. Solo puede contener letras.</p>
+                <div class="inputBox" id="inputBox_email">
                     <input type="email" name="email" id="email" placeholder="Email">
+                    <i class="iconInput fa-solid"></i>
                 </div>
-                <div class="inputBox">
+                <p class="error_email">No es un formato de e-mail válido.</p>
+                <div class="inputBox" id="inputBox_comentario">
                     <textarea name="comentario" id="comentario" placeholder="Escribe el texto que quieras"></textarea>
+                    <i class="iconInput fa-solid"></i>
                 </div>
-                <button>ENVIAR</button>
+                <p class="error_comentario">El comentario debe tener entre 140 y 300 caracteres.</p>
+
+                <div class="formComentario-msg" id="formComentario-msg">
+                    <p><i class="fa-solid fa-triangle-exclamation"></i> <b>Error: </b>Tenés que rellenar el formulario antes de enviarlo.</p>
+                </div>
+
+                <button style="margin-top: 5px;">ENVIAR</button>
+                <p class="formulario_mensaje-exito" id="formulario_mensaje-exito">Formulario enviado exitosamente!</p>
             </form>
         </div>
     </section>
