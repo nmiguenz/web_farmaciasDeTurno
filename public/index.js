@@ -79,7 +79,7 @@ window.addEventListener('DOMContentLoaded', async () => {
             html += `<!-- modelo 3 -->
             <div class="box">
                 <div class="imgBx">
-                    <img src="../assets/testi2.jpg" alt="">
+                    <img src="./assets/testi2.jpg" alt="">
                 </div>
                 <div class="text">
                     <p>${opinar.comentario}</p>
