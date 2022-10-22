@@ -1,5 +1,5 @@
 import {getCollection, alta} from './firebase.js';
-import { validarFormulario, campos} from './funciones.js';
+import { validarFormulario, campos, validarCheck} from './funciones.js';
 
 //Constantes
 const farmaciaCardContainer = document.getElementById('flipCardContainer');  
@@ -70,24 +70,12 @@ inputsComent.forEach((input) =>{
 //SUBMIT de un nuevo comentario
 window.addEventListener('submit', async (e)=>{
     e.preventDefault();
+    const deTurno = validarCheck();
 
-    let deTurno = [];
-
-    let inputsChk = document.querySelectorAll('.formulario_checkbox')
-    inputsChk.forEach((dia) =>{
-        if(dia.checked) deTurno.push(dia.value)
-    } )
-    
-    if(deTurno.length == 0 ){
-        console.log('vacio')
-    }
-    else{
-        console.log('ok')
-    }
-
-    if(campos.nombre){
+    if(campos.nombre && campos.direccion && campos.numero &&
+        campos.localidad && campos.telefono && campos.mapa && campos.check){
       
-        const altaFarmacia = {
+        const farmacia = {
             nombre: formularioAlta['nombre'].value,
             direccion: formularioAlta['direccion'].value,
             numero: formularioAlta['numero'].value,
@@ -97,23 +85,21 @@ window.addEventListener('submit', async (e)=>{
             deTurno : deTurno
         };
 
-        console.log(altaFarmacia)
-
-        //ALTA de un comentario
-        // await alta('comentarios', opinion)
-        // .then( (resp) => {
-        //     //Si fue un éxito el alta, reseteo del formulario
-        //     if(resp.id){
-        //         formularioAlta.reset();
-        //         document.querySelectorAll('.iconInput').forEach((icono) => {icono.classList.remove('fa-circle-check');});
-        //         document.querySelectorAll('input').forEach((input) => {input.classList.remove('input-correcto');});
-        //         document.querySelectorAll('textarea').forEach((input) => {input.classList.remove('input-correcto');});
-        //         document.getElementById('formulario_mensaje-exito').classList.add('formulario_mensaje-exito-activo');
-        //         setTimeout(() => {
-        //             document.getElementById('formulario_mensaje-exito').classList.remove('formulario_mensaje-exito-activo');
-        //         }, 2500);
-        //     }
-        // });
+        // ALTA de una farmacia
+        await alta('farmacias', farmacia)
+        .then( (resp) => {
+            //Si fue un éxito el alta, reseteo del formulario
+            if(resp.id){
+                formularioAlta.reset();
+                document.querySelectorAll('.iconInput').forEach((icono) => {icono.classList.remove('fa-circle-check');});
+                document.querySelectorAll('input').forEach((input) => {input.classList.remove('input-correcto');});
+                document.querySelectorAll('textarea').forEach((input) => {input.classList.remove('input-correcto');});
+                document.getElementById('formulario_mensaje-exito').classList.add('formulario_mensaje-exito-activo');
+                setTimeout(() => {
+                    document.getElementById('formulario_mensaje-exito').classList.remove('formulario_mensaje-exito-activo');
+                }, 2500);
+            }
+        });
     }
     else{
         document.getElementById('formComentario-msg').classList.add('formComentario-msg-active')

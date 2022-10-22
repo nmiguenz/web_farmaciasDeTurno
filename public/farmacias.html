@@ -8,8 +8,8 @@
     <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
     <link rel="stylesheet" href="./farmacias.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" rel="stylesheet" />
-    <script type="module" src="./farmacias.js"></script>
-    <script type="text/javascript" src="./acciones.js"></script>
+    <script type="module" src="farmacias.js"></script>
+    <script type="text/javascript" src="acciones.js"></script>
 
 </head>
 <body>
@@ -71,14 +71,14 @@
                     <div class="inputBox inputBox50" id="inputBox_localidad">
                         <input type="text" name="localidad" id="localidad" placeholder="Localidad">
                         <i class="iconInput fa-solid"></i>
+                        <p class="error_localidad">De 4 a 16 dígitos. Solo puede contener letras.</p>
                     </div>
-                    <p class="error_localidad">De 4 a 16 dígitos. Solo puede contener letras.</p>
     
                     <div class="inputBox inputBox50" id="inputBox_telefono">
                         <input type="text" name="telefono" id="telefono" placeholder="Teléfono">
                         <i class="iconInput fa-solid"></i>
+                        <p class="error_telefono">De 4 a 16 dígitos. Solo puede contener letras.</p>
                     </div>
-                    <p class="error_telefono">De 4 a 16 dígitos. Solo puede contener letras.</p>
                 </div>
 
                 <div class="inputBox" id="inputBox_mapa">

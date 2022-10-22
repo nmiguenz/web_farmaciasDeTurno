@@ -31,50 +31,6 @@ p{
     color: #111;
 }
 
-/* Bloque home */
-.banner{
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: url(../assets/bg.png) ;
-    background-size: cover;   
-}
-
-.banner .content{
-    max-width: 900px;
-    text-align: center ;
-}
-
-.banner .content h2{
-    font-size: 5rem;
-    color: #fff
-}
-
-.banner .content p{
-    font-size: 1rem;
-    color: #fff
-}
-
-.btn{
-    font-size: 1rem;
-    color: #fff;
-    background: #0dbb9d ;
-    display: inline-block;
-    padding: 10px 30px;
-    margin-top: 20px;
-    text-transform: uppercase;
-    text-decoration: none;
-    letter-spacing: 2px;
-    transition: 0.5s;
-}
-
-.btn:hover{
-    letter-spacing: 6px;
-}
-
 .tituloText{
     color: #111;
     font-size: 2rem;
@@ -86,8 +42,6 @@ p{
     font-size: 3.5rem;
     font-weight: 700;
 }
-
-/* fin bloque home */
 
 /* Bloque navbar */
 header{
@@ -318,7 +272,6 @@ header .navigation li a:hover{
 .formDiv .row{
     display: flex;
     flex-direction: row;
-
 }
 
 .formDiv .inputBox{
@@ -381,7 +334,7 @@ button:hover{
 
     .iconInput{
         position: absolute;
-        left: 90%;
+        margin-left: -30px ;
         top: 15px;
     }
 
@@ -404,14 +357,25 @@ button:hover{
     .error_telefono{
         font-size: 14px;
         font-weight: 400;
-        margin-bottom: 5px;
         display: none;
-        margin-top: -15px;
     }
 
     .input_error_activo{
         display: block;
         color: red;
+    }
+
+    p.error_nombre.input_error_activo,
+    p.error_mapa.input_error_activo{
+        margin-top: -20px;
+        margin-bottom: 5px;
+    }
+
+    p.error_telefono.input_error_activo,
+    p.error_localidad.input_error_activo,
+    p.error_direccion.input_error_activo,
+    p.error_numero.input_error_activo{
+        margin-bottom: -15px;
     }
 
     .formComentario-msg {
