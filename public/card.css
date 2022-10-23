@@ -38,6 +38,11 @@
     background-image: linear-gradient(
         45deg, #0dbb9d, #000
     );
+    color: #E9C46A;
+}
+
+.flip-card-front h4{
+    color: #0dbb9d;
 }
 
 .flip-card-back{
@@ -53,6 +58,14 @@
     display: block;
 }
 
+.flip-card-back p{
+    margin-bottom: 1rem;
+}
+
 .flip-card_back h1{
     margin: 0;
+}
+
+p.card-back-p{
+    color: #ff785aff !important;
 }

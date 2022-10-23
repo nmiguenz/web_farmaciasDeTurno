@@ -26,12 +26,13 @@ window.addEventListener('DOMContentLoaded', async () => {
             <div class="flip-card-inner">
                 <div class="flip-card-front">
                     <h2>${farmacia.nombre}</h2>
+                    <h4>(${farmacia.localidad})</h4>
                 </div>
                 <div class="flip-card-back">
                     <div>
                         <h3><i class="fa-solid fa-location-dot"></i> <span>Dirección:</span> ${farmacia.direccion + ' ' + farmacia.numero + ', ' + farmacia.localidad} </h3>
                     </div>
-                    <p><i class="fa-solid fa-phone"></i> <span>Teléfono:</span> ${farmacia.telefono}</p>
+                    <p class="card-back-p"><i class="fa-solid fa-phone"></i> <span>Teléfono:</span> ${farmacia.telefono}</p>
                 </div>
             </div>
         </div>`
