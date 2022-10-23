@@ -71,7 +71,6 @@ const validarCampo = (expresion, input, campo) => {
 	}
 }
 
-
 export const validarCheck = () =>{
 	let arrayTurnos = [];
 	
@@ -84,4 +83,29 @@ export const validarCheck = () =>{
 		campos["check"] = true;
 		return arrayTurnos;
 	}
+}
+
+export async function traerDatosAPI(pos, elementPerfil) {
+	
+	let fotos = [];
+
+	for (let i = 0; i<= pos; i++){
+		try {
+			await fetch('https://randomuser.me/api') // API a leer
+	
+			.then(datos => datos.json()) //res guarda el dato mediante el método .json()
+			.then(datos => {
+			 	fotos.push(datos.results[0].picture.large);
+			});
+		} 
+		catch (error) {
+			console.log('Ocurrió un error grave', error)
+		}
+	}
+	
+	let j = 0;
+	elementPerfil.forEach((elementPerfil) =>{
+		elementPerfil.innerHTML = `<img src="${fotos[j]}" alt="">`;
+		j++;
+	});
 }

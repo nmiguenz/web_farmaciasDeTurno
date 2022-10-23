@@ -1,5 +1,5 @@
 import {getCollection, alta, onGetCollection, onGetCollectionContains} from './firebase.js';
-import { validarFormulario, campos} from './funciones.js';
+import { validarFormulario, campos, traerDatosAPI} from './funciones.js';
 
 //Constantes
 const farmaciaCardContainer = document.getElementById('flipCardContainer');  
@@ -72,27 +72,31 @@ window.addEventListener('DOMContentLoaded', async () => {
 
 // Carga permanente de las opiniones
 window.addEventListener('DOMContentLoaded', async () => {
-
-    onGetCollection('comentarios', 'timestamp', 'desc', 3, (querySnapshot2) => {
-        let html = ''
+    
+    await onGetCollection('comentarios', 'timestamp', 'desc', 3, (querySnapshot2) => {
+        let html = '';
 
         querySnapshot2.forEach(element => {
             let opinar = element.data();
-    
+
             html += `<!-- modelo 3 -->
             <div class="box">
-                <div class="imgBx">
-                    <img src="./assets/testi2.jpg" alt="">
+                <div class="imgBx pefil" id="perfil">
                 </div>
                 <div class="text">
                     <p>${opinar.comentario}</p>
                     <h3>${opinar.nombre}</h3>
                 </div>
             </div>`
+
         });
-    
         opinionCard.innerHTML = html;
     });
+    
+    // Agrego timeout para que espere a la inclusión del bloque perfil en el DOM
+    setTimeout(async () => {
+        const elementPerfil = document.querySelectorAll("#perfil");
+        await traerDatosAPI(2,elementPerfil);}, 2000)
 });
 
 //Se agrega addEventListener a los INPUTS 
