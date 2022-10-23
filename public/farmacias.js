@@ -1,10 +1,9 @@
-import {getCollection, alta} from './firebase.js';
-import { validarFormulario, campos, validarCheck} from './funciones.js';
+import { getCollection, alta } from './firebase.js';
+import { validarFormulario, campos, validarCheck } from './funciones.js';
 
 //Constantes
 const farmaciaCardContainer = document.getElementById('flipCardContainer');  
 const divIframe = document.getElementById('divIframe');
-const altaCard = document.getElementById('alta');
 const formularioAlta = document.querySelector('form');
 const inputsComent = document.querySelectorAll('.formDiv input');
 
@@ -14,7 +13,7 @@ window.addEventListener('scroll', function(){
     header.classList.toggle("move", window.scrollY > 0);
 });
  
-//Carga de las CARDS con las farmacias de turno
+//Carga de las CARDS con la totalidad de las farmacias
 window.addEventListener('DOMContentLoaded', async () => {
     const querySnapshot = await getCollection('farmacias');
     let html = ''
@@ -33,7 +32,6 @@ window.addEventListener('DOMContentLoaded', async () => {
                         <h3><i class="fa-solid fa-location-dot"></i> <span>Dirección:</span> ${farmacia.direccion + ' ' + farmacia.numero + ', ' + farmacia.localidad} </h3>
                     </div>
                     <p><i class="fa-solid fa-phone"></i> <span>Teléfono:</span> ${farmacia.telefono}</p>
-                    <button id="btnUbicacion" data-id='${farmacia.mapa}'>VER UBICACION</button>
                 </div>
             </div>
         </div>`
@@ -67,7 +65,7 @@ inputsComent.forEach((input) =>{
     input.addEventListener('blur', validarFormulario) //Evento que controla cuando se presiona fuera del elemento
 });
 
-//SUBMIT de un nuevo comentario
+//SUBMIT de una nueva farmacia
 window.addEventListener('submit', async (e)=>{
     e.preventDefault();
     const deTurno = validarCheck();
@@ -102,6 +100,9 @@ window.addEventListener('submit', async (e)=>{
         });
     }
     else{
-        document.getElementById('formComentario-msg').classList.add('formComentario-msg-active')
+        document.getElementById('formComentario-msg').classList.add('formComentario-msg-active');
+        setTimeout( () =>{
+            document.getElementById('formComentario-msg').classList.remove('formComentario-msg-active');
+        },3000);
     }
 });

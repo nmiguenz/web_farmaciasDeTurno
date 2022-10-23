@@ -445,7 +445,7 @@ footer p span{
         position: relative;
         width: 40px;
         height: 40px;
-        background: url(../assets/menu.png);
+        background: url(./assets/menu.png);
         background-size: 30px;
         background-repeat: no-repeat;
         background-position: center;
@@ -453,7 +453,7 @@ footer p span{
     }
 
     .menuToggle.activar{
-        background: url(../assets/close.png);
+        background: url(./assets/close.png);
         background-size: 30px;
         background-repeat: no-repeat;
         background-position: center;
@@ -547,14 +547,26 @@ footer p span{
         width: 360px;
         padding: 30px;
     }
-
-    /* alta */
     .formDiv {
         padding: 50px;
         margin-top: 25px;
     }
+
+    .row{
+        flex-wrap: wrap;
+    }
+
+    #inputBox_numero, #inputBox_telefono {
+        margin-left: 0px;
+    }
+
+    .formulario_grupo{
+        flex-wrap: wrap;
+    }
+
     footer p {
         font-size: 12px;
     }
+
 }
 

@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-app.js";
-import { getFirestore, collection, getDocs, addDoc, onSnapshot, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-firestore.js"
+import { getFirestore, collection, getDocs, addDoc, onSnapshot, query, where, orderBy, limit } from "https://www.gstatic.com/firebasejs/9.11.0/firebase-firestore.js"
 
 //Firebase configuration
 const firebaseConfig = {
@@ -19,7 +19,7 @@ const db = getFirestore(app);
 
 // Get a collection from your database
 export const getCollection = async (nombreColeccion) => {
-  const colRef = collection(db, nombreColeccion)
+  const colRef = collection(db, nombreColeccion);
   const docs = await getDocs(colRef);
   return docs;
 }
@@ -33,10 +33,19 @@ export const alta = async (nombreColeccion, objeto) =>{
 //Método GET
 // Escucha los cambios en la base 
 // Tiene incluido query de ordenamiento y limite
-export const onGetCollection = async (nombreColeccion, campoOrdernamiento, formaOrdenamiento, cantidad, callback) =>{
+export const onGetCollection = async (nombreColeccion, campo, formaOrdenamiento, cantidad, callback) =>{
   var colecctionRef = collection(db, nombreColeccion);
-  const queryRes = query(colecctionRef, orderBy(campoOrdernamiento, formaOrdenamiento), limit(cantidad));
+  const queryRes = query(colecctionRef, orderBy(campo, formaOrdenamiento), limit(cantidad));
   onSnapshot(queryRes, callback);
 } 
+
+//Método GET
+// Escucha los cambios en la base 
+// Tiene incluido query que filtra segun un campo
+export const onGetCollectionContains = async (nombreColeccion, campo, fecha, callback) =>{
+  var colecctionRef = collection(db, nombreColeccion);
+  const queryRes = query(colecctionRef, where(campo, 'array-contains', fecha));
+  onSnapshot(queryRes, callback);
+}
 
 

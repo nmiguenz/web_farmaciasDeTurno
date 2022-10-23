@@ -439,12 +439,15 @@ header .navigation li a:hover{
 }
 
 .opiniones .content .box .text{
+    display: grid;
     text-align: center;
+    overflow: hidden ;
 }
 
 .opiniones .content .box .text p{
     color: #666;
     font-style: italic;
+    overflow-x: hidden ;
 }
 
 .opiniones .content .box .text h3{
@@ -495,6 +498,74 @@ header .navigation li a:hover{
     resize: vertical;
 }
 
+    /* Validación de formulario */
+    .input-incorrecto{
+        border: 2px solid red !important
+    }
+
+    .input-correcto{
+        border: 2px solid #1ed12d !important; 
+    }
+
+    .iconInput{
+        position: absolute;
+        left: 90%;
+        top: 15px;
+    }
+
+    .iconInput .fa-solid, .fa-circle-check {
+        font-size: 20px;
+        color: #1ed12d;
+    }
+
+    .iconInput .fa-solid, .fa-circle-xmark{
+        font-size: 20px;
+        color: red;
+    }
+
+    .error_nombre, 
+        .error_email,
+            .error_comentario{
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 5px;
+                display: none;
+                margin-top: -15px;
+    }
+
+    .input_error_activo{
+        display: block;
+        color: red;
+    }
+
+    .formComentario-msg {
+        display: none;
+        font-size: 13px;
+        background-color: red;
+        padding: 10px;
+        margin: -15px 0 10px;
+    }
+
+    .formComentario-msg-active {
+        display: block;
+    }
+
+    .formComentario-msg-active p {
+        color: #fff;
+    }
+
+    .formulario_mensaje-exito {
+        font-size: 14px;
+        margin-top: 1rem;
+        color: #119200;
+        display: none;
+    }
+
+    .formulario_mensaje-exito-activo {
+        display: block;
+    }
+    /* Fin validacion de formulario */
+
 button{
     font-size: 1rem;
     color: #fff;
@@ -511,6 +582,9 @@ button{
 button:hover{
     letter-spacing: 6px;
 }
+
+
+
 /* Fin del bloque contacto */
 
 /* Inicio del bloque footer */
@@ -641,13 +715,9 @@ footer p span{
         text-align: center;
     }
 
-    /* Bloque Nosotros */
-    /* .nosotros .content {
-        margin-top: 20px;
+    iframe{
+        width: auto;
     }
-    .nosotros .content .box {
-        width: 300px;
-    } */
 
     /* Opiniones */
     .opiniones .content {
@@ -670,71 +740,9 @@ footer p span{
     footer p {
         font-size: 12px;
     }
-}
 
-/* Validación de formulario */
-.input-incorrecto{
-    border: 2px solid red !important
-}
+    .input_error_activo {
+        text-align: start;
+    }
 
-.input-correcto{
-    border: 2px solid #1ed12d !important; 
-}
-
-.iconInput{
-    position: absolute;
-    left: 90%;
-    top: 15px;
-}
-
-.iconInput .fa-solid, .fa-circle-check {
-    font-size: 20px;
-    color: #1ed12d;
-}
-
-.iconInput .fa-solid, .fa-circle-xmark{
-    font-size: 20px;
-    color: red;
-}
-
-.error_nombre, 
-    .error_email,
-        .error_comentario{
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 5px;
-            display: none;
-            margin-top: -15px;
-}
-
-.input_error_activo{
-    display: block;
-    color: red;
-}
-
-.formComentario-msg {
-    display: none;
-    font-size: 13px;
-    background-color: red;
-    padding: 10px;
-    margin: -15px 0 10px;
-}
-
-.formComentario-msg-active {
-    display: block;
-}
-
-.formComentario-msg-active p {
-    color: #fff;
-}
-
-.formulario_mensaje-exito {
-	font-size: 14px;
-    margin-top: 1rem;
-	color: #119200;
-	display: none;
-}
-
-.formulario_mensaje-exito-activo {
-	display: block;
 }

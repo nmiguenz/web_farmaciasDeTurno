@@ -1,9 +1,9 @@
 // Agrego nuevas funcionalidades
 //REGEX
 const expresiones = {
-	nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-	direccion: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
-	localidad: /^[a-zA-ZÀ-ÿ\s]{1,40}$/,
+	nombre: /^[a-zA-ZÀ-ÿ\s]{4,40}$/, // Letras y espacios, pueden llevar acentos.
+	direccion: /^[a-zA-ZÀ-ÿ.\s]{4,40}$/,
+	localidad: /^[a-zA-ZÀ-ÿ\s]{4,40}$/,
 	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     comentario: /^[\w\W\d\s\n]{140,300}$/,
 	telefono: /^\d{8,14}$/, // 7 a 14 numeros.

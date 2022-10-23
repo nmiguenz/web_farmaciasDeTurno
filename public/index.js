@@ -1,4 +1,4 @@
-import {getCollection, alta, onGetCollection} from './firebase.js';
+import {getCollection, alta, onGetCollection, onGetCollectionContains} from './firebase.js';
 import { validarFormulario, campos} from './funciones.js';
 
 //Constantes
@@ -19,52 +19,54 @@ window.addEventListener('scroll', function(){
 window.addEventListener('DOMContentLoaded', async () => {
 
     let fecha = Date.now();
-    const hoy = new Date(fecha)
-    console.log(hoy.getDay()) //siendo 0 (Domingo) el primer día, 1 (Lunes) el segundo, etcétera.
+    let fechaCons = new Date(fecha);
+    let hoy = (fechaCons.getDay()).toString();
 
-    const querySnapshot = await getCollection('farmacias');
-    let html = ''
-    
-    querySnapshot.forEach(element => {
-        let farmacia = element.data();
+    onGetCollectionContains('farmacias', 'deTurno', hoy, (querySnapshot) => { 
+        let html = ''
+        
+        querySnapshot.forEach(element => {
+            let farmacia = element.data();
 
-        html += `<!-- modelo 2 -->
-        <div class="flip-card">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                    <h2>${farmacia.nombre}</h2>
-                </div>
-                <div class="flip-card-back">
-                    <div>
-                        <h3><i class="fa-solid fa-location-dot"></i> <span>Dirección:</span> ${farmacia.direccion + ' ' + farmacia.numero + ', ' + farmacia.localidad} </h3>
+            html += `<!-- modelo 2 -->
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h2>${farmacia.nombre}</h2>
                     </div>
-                    <p><i class="fa-solid fa-phone"></i> <span>Teléfono:</span> ${farmacia.telefono}</p>
-                    <button id="btnUbicacion" data-id='${farmacia.mapa}'>VER UBICACION</button>
+                    <div class="flip-card-back">
+                        <div>
+                            <h3><i class="fa-solid fa-location-dot"></i> <span>Dirección:</span> ${farmacia.direccion + ' ' + farmacia.numero + ', ' + farmacia.localidad} </h3>
+                        </div>
+                        <p><i class="fa-solid fa-phone"></i> <span>Teléfono:</span> ${farmacia.telefono}</p>
+                        <button id="btnUbicacion" data-id='${farmacia.mapa}'>VER UBICACION</button>
+                    </div>
                 </div>
-            </div>
-        </div>`
-
-    });
-    farmaciaCardContainer.innerHTML = html;
-
-    const btnUbicacion = farmaciaCardContainer.querySelectorAll("#btnUbicacion");
+            </div>`
     
-    btnUbicacion.forEach(btn =>{
-        btn.addEventListener('click', (e) => {
-            const frame = e.target.dataset.id;
+            farmaciaCardContainer.innerHTML = html;
+        });
 
-            divIframe.innerHTML = ` <div class="iframeDiv">
-                                        <i class="fa-sharp fa-solid fa-x" onclick="ocultarIFrame()"></i>
-                                        ${frame}
-                                    </div>`;
-            
-            document.querySelector('#divIframe').classList.toggle('iframeVisible'); //Activa/desactiav el Iframe en una especie de modal
-
-            //Hace un scroll hasta el inicio del Modal
-            let coords = document.querySelector('#divIframe').getBoundingClientRect();
-            window.scroll(0, coords.top + scrollY);
+        const btnUbicacion = farmaciaCardContainer.querySelectorAll("#btnUbicacion");
+        
+        btnUbicacion.forEach(btn =>{
+            btn.addEventListener('click', (e) => {
+                const frame = e.target.dataset.id;
+    
+                divIframe.innerHTML = ` <div class="iframeDiv">
+                                            <i class="fa-sharp fa-solid fa-x" onclick="ocultarIFrame()"></i>
+                                            ${frame}
+                                        </div>`;
+                
+                document.querySelector('#divIframe').classList.toggle('iframeVisible'); //Activa/desactiav el Iframe en una especie de modal
+    
+                //Hace un scroll hasta el inicio del Modal
+                let coords = document.querySelector('#divIframe').getBoundingClientRect();
+                window.scroll(0, coords.top + scrollY);
+            });
         });
     });
+
 });
 
 // Carga permanente de las opiniones
@@ -72,7 +74,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     onGetCollection('comentarios', 'timestamp', 'desc', 3, (querySnapshot2) => {
         let html = ''
-        
+
         querySnapshot2.forEach(element => {
             let opinar = element.data();
     
@@ -134,6 +136,9 @@ window.addEventListener('submit', async (e)=>{
         });
     }
     else{
-        document.getElementById('formComentario-msg').classList.add('formComentario-msg-active')
+        document.getElementById('formComentario-msg').classList.add('formComentario-msg-active');
+        setTimeout(() => {
+            document.getElementById('formComentario-msg').classList.remove('formComentario-msg-active');
+        }, 3000);
     }
 });
