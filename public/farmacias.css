@@ -305,6 +305,7 @@ button:hover{
     .input_error_activo{
         display: block;
         color: red;
+        text-align: start;
     }
 
     p.error_nombre.input_error_activo,
