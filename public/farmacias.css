@@ -113,6 +113,9 @@ header .navigation li a:hover{
     color: #E9C46A;
 }
 
+header .navigation li a.navActive{
+    color:#E9C46A;
+}
 /* Fin bloque navbar */
 
 /* Bloque deTurno */

@@ -6,15 +6,29 @@ const farmaciaCardContainer = document.getElementById('flipCardContainer');
 const divIframe = document.getElementById('divIframe');
 const formularioAlta = document.querySelector('form');
 const inputsComent = document.querySelectorAll('.formDiv input');
+//Navbar
+const listadoNav = document.querySelector('ul');
+const seccion = listadoNav.querySelectorAll('li a');
 
 //Comportamiento del NAVBAR al hacer scroll
 window.addEventListener('scroll', function(){
     const header = document.querySelector('header');
     header.classList.toggle("move", window.scrollY > 0);
 });
+
+//Activación de la seccion en Navbar
+seccion.forEach((element) => {
+    element.addEventListener('click', (e) => {
+        seccion.forEach((btn) => {
+            btn.classList.remove('navActive');
+          })
+        e.target.classList.add('navActive');
+    });
+});
  
 //Carga de las CARDS con la totalidad de las farmacias
-window.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener('DOMContentLoaded', async () => {   
+    
     const querySnapshot = await getCollection('farmacias');
     let html = ''
     

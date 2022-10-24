@@ -8,20 +8,34 @@ const opinionCard = document.getElementById('opinar');
 const formularioComent = document.querySelector('form');
 const inputsComent = document.querySelectorAll('.formDiv input');
 const textareaComent = document.querySelectorAll('.formDiv textarea');
+//Navbar
+const listadoNav = document.querySelector('ul');
+const seccion = listadoNav.querySelectorAll('li a');
+var elementoSeleccionado = '';
 
 //Comportamiento del NAVBAR al hacer scroll
 window.addEventListener('scroll', function(){
     const header = document.querySelector('header');
     header.classList.toggle("move", window.scrollY > 0);
 });
- 
+
+//Activación de la seccion en Navbar
+seccion.forEach((element) => {
+    element.addEventListener('click', (e) => {
+        seccion.forEach((btn) => {
+            btn.classList.remove('navActive');
+          })
+        e.target.classList.add('navActive');
+    });
+});
+
 //Carga de las CARDS con las farmacias de turno
 window.addEventListener('DOMContentLoaded', async () => {
 
     let fecha = Date.now();
     let fechaCons = new Date(fecha);
     let hoy = (fechaCons.getDay()).toString();
-
+    
     onGetCollectionContains('farmacias', 'deTurno', hoy, (querySnapshot) => { 
         let html = ''
         

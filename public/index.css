@@ -145,6 +145,10 @@ header .navigation li a:hover{
     color: #0dbb9d;
 }
 
+header .navigation li a.navActive{
+    color:#0dbb9d;
+}
+
 /* Fin bloque navbar */
 
 /* Bloque Nosotros */
