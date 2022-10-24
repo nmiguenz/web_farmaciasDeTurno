@@ -2,7 +2,7 @@
 //REGEX
 const expresiones = {
 	nombre: /^[a-zA-ZÀ-ÿ\s]{4,40}$/, // Letras y espacios, pueden llevar acentos.
-	direccion: /^[a-zA-ZÀ-ÿ.\s]{4,40}$/,
+	direccion: /^[a-zA-ZÀ-ÿ.\d\s]{4,40}$/,
 	localidad: /^[a-zA-ZÀ-ÿ\s]{4,40}$/,
 	email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     comentario: /^[\w\W\d\s\n]{140,300}$/,
